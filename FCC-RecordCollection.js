@@ -28,25 +28,23 @@ var collectionCopy = JSON.parse(JSON.stringify(collection));
 
 // Only change code below this line
 function updateRecords(id, prop, value) {
-  let record = collection[id];
-  if(prop != "tracks" && "value" != "")
-    record[prop] = value;
-    break
+  var record = collection.id;
+  if(prop != "tracks" && value !== ""){
+    record.prop = value;
+    return collection;
+  }else if(prop === "tracks" && value !== ""){
+    if(record.tracks === false){
+    record.push(tracks=[]);
+    record.tracks = value;
+    return collection;
+  }else if(value === ""){
+    delete record.prop;
+    return collection;
+  }else{
+    record.push(value);
+    return collection;
+    }
   }
-  if (prop == "tracks" && value != ""){
-    if (record["tracks"] === false){
-    record[prop].push("tracks");
-    record[prop] = value;
-    break
-  }
-  if(value = ""){
-    delete record[prop];
-    }else{
-    collection[id].push(value);
-    break  
-  
-  return collection;
-}
   }
 
 // Alter values below to test your code
