@@ -1,4 +1,5 @@
-﻿var collection = {
+﻿// Setup
+var collection = {
     "2548": {
       "album": "Slippery When Wet",
       "artist": "Bon Jovi",
@@ -28,23 +29,23 @@ var collectionCopy = JSON.parse(JSON.stringify(collection));
 
 // Only change code below this line
 function updateRecords(id, prop, value) {
-  var record = collection.id;
-  if(prop !== "tracks" && value !== ""){
-    record[prop] = value;
-    return collection;
-  }else if(prop === "tracks" && value !== ""){
-    if(record.tracks === false){
-    record.push(tracks=[]);
-    record[tracks] = value;
-    return collection;
-  }else if(value === ""){
-    delete record[prop];
-    return collection;
-  }else{
-    record[prop].push(value);
-    return collection;
-    }
+  if (prop !== 'tracks' && value !== ''){
+    collection[id][prop] = value;
   }
+  if (prop === 'tracks' && collection[id].tracks === undefined){
+    collection[id].tracks = [ ];
   }
+  if (prop === 'tracks' && value !== ''){
+    collection[id].tracks.push(value);
+  }
+  if (value === ''){
+    delete collection[id][prop];
+  }
+  return collection;
+}
+
 // Alter values below to test your code
-updateRecords(5439, "artist", "ABBA");
+
+//console.log(collection);
+updateRecords(5439, "tracks", "Take a Chance on Me");
+console.log(collection[5439].tracks);
