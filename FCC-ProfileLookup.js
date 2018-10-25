@@ -30,7 +30,6 @@ function lookUpProfile(name, prop){
 //Set variables
 var nameList = '';
 var propList;
-var propString
 //Get value for nameList to use later
 for (var i = 0; i < contacts.length; i++){
     if (contacts[i].firstName === name){
@@ -47,13 +46,13 @@ for (let obj in contacts[x]){
 }
 //Return appropriate values
 if (nameList.length === 0){
-    return console.log('No such contact');
+    return 'No such contact';
 }else if (propList.length === 0){
-    return console.log('No such property');
+    return 'No such property';
 }else{
-    return console.log(propList);
+    return propList;
 }
 // Only change code above this line
 }
 // Change these values to test your function
-lookUpProfile("Kristian", "lastName");
+lookUpProfile("Harry", "address");
