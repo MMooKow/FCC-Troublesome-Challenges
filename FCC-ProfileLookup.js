@@ -29,7 +29,7 @@ function lookUpProfile(name, prop){
 // Only change code below this line
 //Set variables
 var nameList = '';
-var propList;
+var propList = '';
 //Get value for nameList to use later
 for (var i = 0; i < contacts.length; i++){
     if (contacts[i].firstName === name){
