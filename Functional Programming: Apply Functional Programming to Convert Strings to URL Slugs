@@ -1,12 +1,12 @@
 // the global variable
-var globalTitle = " Winter Is  Coming";
+var globalTitle = "Winter Is Coming";
 
 // Add your code below this line
 function urlSlug(title) {
     let newTitle = title;
     //Check for non-character at beginning
-    let beginningRegex = /[^\C]/;
-    let beginningTest = beginningRegex.test(newTitle);
+    let myRegex = /[^\C]/;
+    let beginningTest = myRegex.test(newTitle);
     if (beginningTest){
         newTitle = "";
        for (let i = 1; i < title.length; i++){    
@@ -15,20 +15,30 @@ function urlSlug(title) {
     }
     //console.log(beginningTest);
     //Check for extra spaces in middle
-    let middleRegex = /[\C]/g;
-  for (let i = 0; i < newTitle.length; i++){
-      for (let j = 0; j < newTitle.length; j++){
-          if (middleRegex.test(newTitle[i]) && middleRegex.test(newTitle[j])){
-              newTitle.concat().replace(newTitle[i] + newTitle[j], "-");
-              return newTitle;
-          }
-      }
-  }
+    let strToArr = newTitle.split("");
+    let midRegex = /[\s\s]/;
+    let myMatch = newTitle.match(midRegex);
+    console.log(myMatch.length);
+        for (let i = 0; i < strToArr.length; i++){
+            //console.log(i + "i");
+            
+            for (let j = 1; j <= strToArr.length; j++){
+                //console.log(j + "j")
+                
+                if (strToArr[i] + strToArr[j] === myMatch){
+                   console.log("true");
+                }
+                
+             
+        }//end inner for loop
+    }//end outter for loop
+    
+    
   //Chained functions that disassembles and reassembles string. Reduce to lowercase.
   let frankenVar = newTitle.split(" ").join("-").toLowerCase();
-  console.log(frankenVar);4
-  
-}
+  console.log(frankenVar);
+  return frankenVar;
+  }
 // Add your code above this line
 
-var winterComing = urlSlug(globalTitle); // Should be "winter-is-coming"
+var winterComing = urlSlug(" Winter Is  Coming"); // Should be "winter-is-coming"
