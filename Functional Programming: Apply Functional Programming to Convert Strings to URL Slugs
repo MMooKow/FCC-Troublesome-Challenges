@@ -1,33 +1,44 @@
+/* 
+globalTitle -> mutableTitle -> noSpaceBeginning -> noSpaceMiddle
+
+*/
 // the global variable
-var globalTitle = " Winter Is  Coming";
+var globalTitle = " A Mind Needs  Books Like A Sword Needs A Whetstone";
 
 // Add your code below this line
-function urlSlug(title) {
-    let newTitle = title;
-    //Check for non-character at beginning
-    let beginningRegex = /[^\C]/;
-    let beginningTest = beginningRegex.test(newTitle);
-    if (beginningTest){
-        newTitle = "";
-       for (let i = 1; i < title.length; i++){    
-           newTitle += title[i];
-       }
+function urlSlug(title){
+    //Change globalTile to a mutable variable
+    let mutableTitle = "";
+    for (let i = 0; i < globalTitle.length; i++){
+        mutableTitle += globalTitle[i];
     }
-    //console.log(beginningTest);
-    //Check for extra spaces in middle
-    let middleRegex = /[\C]/g;
-  for (let i = 0; i < newTitle.length; i++){
-      for (let j = 0; j < newTitle.length; j++){
-          if (middleRegex.test(newTitle[i]) && middleRegex.test(newTitle[j])){
-              newTitle.concat().replace(newTitle[i] + newTitle[j], "-");
-              return newTitle;
-          }
-      }
-  }
-  //Chained functions that disassembles and reassembles string. Reduce to lowercase.
-  let frankenVar = newTitle.split(" ").join("-").toLowerCase();
-  console.log(frankenVar);4
-  
+    //Regex to remove spaces at the beginning
+    let beginningRegex = /^\s/;
+    let noBeginningSpace = "";
+    let beginningTest = beginningRegex.test(mutableTitle);
+    if (beginningTest) {
+        for (let j = 1; j < mutableTitle.length; j++){
+            noBeginningSpace += mutableTitle[j];
+        }
+    }else {
+        for (let i = 0; i < globalTitle.length; i++){
+        noBeginningSpace += mutableTitle[i];
+    }
+    }
+    //Regex to remove consecutive spaces in middle
+    let midRegex = /\s\s/;
+    let noSpaceMiddle = "";
+    let midTest = midRegex.test(noBeginningSpace);
+    if (midTest) {
+        console.log("yes");
+        /*
+        USE FOR LOOP TO ADD ELEMENTS TO NEW VARIABLE. CHECK EACH BEFORE IT GETS ADDED WITH THE NEXT ONE IN LINE IF IT EQUALS " "
+         */
+    }
+    //Convert string to no spaces, lowercase, and connected by "-"
+    let frankenVar = noSpaceMiddle.join("-").toLowerCase();
+   console.log(frankenVar);
+    return frankenVar;
 }
 // Add your code above this line
 
