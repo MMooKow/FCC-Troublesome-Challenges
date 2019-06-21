@@ -1,9 +1,9 @@
 /* 
-globalTitle -> mutableTitle -> noSpaceBeginning -> noSpaceMiddle
+globalTitle -> mutableTitle -> noSpaceBeginning -> noSpaceMiddle -> frankenVar
 
 */
 // the global variable
-var globalTitle = " A Mind Needs  Books Like A Sword Needs A Whetstone";
+var globalTitle = "Hold The Door";
 
 // Add your code below this line
 function urlSlug(title){
@@ -27,16 +27,30 @@ function urlSlug(title){
     }
     //Regex to remove consecutive spaces in middle
     let midRegex = /\s\s/;
-    let noSpaceMiddle = "";
+    var noSpaceMiddle = "";
     let midTest = midRegex.test(noBeginningSpace);
     if (midTest) {
-        console.log("yes");
-        /*
+        for (let i = 0; i < noBeginningSpace.length; i++) {
+            if (noBeginningSpace[i] === " " && noBeginningSpace[i+1] === " "){
+                var myIndex = i;
+            }
+        }
+        for (let j = 0; j < noBeginningSpace.length; j++){
+            if (j === myIndex){
+                j++;
+            }
+            noSpaceMiddle += noBeginningSpace[j];
+        }
+        /* ^^^^^^^^^^^^^^^^^^^^^^^^^
         USE FOR LOOP TO ADD ELEMENTS TO NEW VARIABLE. CHECK EACH BEFORE IT GETS ADDED WITH THE NEXT ONE IN LINE IF IT EQUALS " "
          */
+    }else{
+        for (let i = 0; i < noBeginningSpace.length; i++){
+        noSpaceMiddle += noBeginningSpace[i];
+         }
     }
     //Convert string to no spaces, lowercase, and connected by "-"
-    let frankenVar = noSpaceMiddle.join("-").toLowerCase();
+    let frankenVar = noSpaceMiddle.split(" ").join("-").toLowerCase();
    console.log(frankenVar);
     return frankenVar;
 }
